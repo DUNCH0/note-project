@@ -29,8 +29,8 @@ function displayTasks(){
                                         
                                         <!-- task name and date -->
                                             <div>
-                                                <h2 id="taskName" class="font-mono font-bold text-xl pl-2">${userTasks.title}</h2>
-                                                <h3 class="font-mono font-bold text-xl pl-2">${userTasks.date}</h3>
+                                                <h2 id="taskName" class="font-mono font-bold text-xl pl-2">${i.title}</h2>
+                                                <h3 class="font-mono font-bold text-xl pl-2">${i.date}</h3>
                                             </div>
                                         <!-- task name and date -->
     
