@@ -19,6 +19,23 @@ let userTasks = [
     }
 ]
 
+
+// get from local storage function
+
+function getLocalStorageTasks(){
+    retrievedTask = JSON.parse(localStorage.getItem("tasks"))
+    userTasks = retrievedTask ?? []
+}
+
+getLocalStorageTasks()
+
+function setLocalStorageTasks(){
+    let userTasksString = JSON.stringify(userTasks)
+    localStorage.setItem("tasks", userTasksString)
+}
+
+
+
 function displayTasks(){
     document.getElementById('taskStyle').innerHTML = ""
     let index = 0;
@@ -93,7 +110,9 @@ document.getElementById('plusButton').addEventListener('click', function(){
         "isDone" : false
     }
     userTasks.push(userInputObject)
+    setLocalStorageTasks()
     displayTasks()
+    
 })
 
 
@@ -103,6 +122,7 @@ function delButton(index){
     let isConfirmed = confirm(`Are you sure you want to delete : ${task.title} ? `)
     if(isConfirmed){
         userTasks.splice(index, 1)
+        setLocalStorageTasks()
         displayTasks()  
     }
 }
@@ -111,4 +131,5 @@ function updButton(index){
     let newTask = userTasks[index]
     let newUserInput = prompt(`Would you like to edit : ${newTask.title} ?`, newTask.title)
     newTask.title = newUserInput
+    setLocalStorageTasks()
 }

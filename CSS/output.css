@@ -870,10 +870,6 @@ video {
   width: weird-and-invalid;
 }
 
-.w-28 {
-  width: 7rem;
-}
-
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -1392,10 +1388,6 @@ video {
   justify-items: stretch;
 }
 
-.gap-32 {
-  gap: 8rem;
-}
-
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -1891,11 +1883,6 @@ video {
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
-.bg-cyan-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 182 212 / var(--tw-bg-opacity));
 }
 
 .decoration-slice {
