@@ -1,45 +1,26 @@
-let userTasks = [
-    {
-        "title" : "1",
-        "date"  : "10/10/2010",
-        "isDone": false
-    },
-    
-    {
-        "title" : "2",
-        "date"  : "10/10/2010",
-        "isDone": false
-    
-    },
-
-    {
-        "title" : "3",
-        "date"  : "10/10/2010",
-        "isDone": false
-    }
-]
+let userTasks;
 
 
 // get from local storage function
 
-function getLocalStorageTasks(){
+function getLocalStorageTasks() {
     retrievedTask = JSON.parse(localStorage.getItem("tasks"))
     userTasks = retrievedTask ?? []
 }
 
 getLocalStorageTasks()
 
-function setLocalStorageTasks(){
+function setLocalStorageTasks() {
     let userTasksString = JSON.stringify(userTasks)
     localStorage.setItem("tasks", userTasksString)
 }
 
 
 
-function displayTasks(){
+function displayTasks() {
     document.getElementById('taskStyle').innerHTML = ""
     let index = 0;
-    for(let i of userTasks){
+    for (let i of userTasks) {
         let content = `<div id="taskStyle">
                                 <!-- task bar 1 flex -->
                                     <div  style="justify-content: space-between" class="hover:bg-gray-400 hover:shadow-xl  shadow-md  flex flex-row bg-gray-300 border-2 border-black rounded-xl items-center mt-2 ml-2 mr-2">
@@ -88,48 +69,49 @@ function displayTasks(){
                                     </div>
                                  <!-- task bar 1 flex -->
                             </div>`
-       
-             
+
+
         document.getElementById('taskStyle').innerHTML += content
         index++
     }
-    
-    
+
+
 }
 
 displayTasks()
 
-document.getElementById('plusButton').addEventListener('click', function(){
+document.getElementById('plusButton').addEventListener('click', function () {
     let userInput = prompt("Please enter your task name:")
     let now = new Date()
-    let userInputDate = now.getDay() + '/' + (now.getMonth()+1) + '/' + now.getFullYear()
+    let userInputDate = now.getDay() + '/' + (now.getMonth() + 1) + '/' + now.getFullYear()
 
     let userInputObject = {
-        "title" : userInput,
-        "date" : userInputDate,
-        "isDone" : false
+        "title": userInput,
+        "date": userInputDate,
+        "isDone": false
     }
     userTasks.push(userInputObject)
     setLocalStorageTasks()
     displayTasks()
-    
+
 })
 
 
-    
-function delButton(index){
+
+function delButton(index) {
     let task = userTasks[index]
     let isConfirmed = confirm(`Are you sure you want to delete : ${task.title} ? `)
-    if(isConfirmed){
+    if (isConfirmed) {
         userTasks.splice(index, 1)
         setLocalStorageTasks()
-        displayTasks()  
+        displayTasks()
     }
 }
 
-function updButton(index){
+function updButton(index) {
     let newTask = userTasks[index]
     let newUserInput = prompt(`Would you like to edit : ${newTask.title} ?`, newTask.title)
     newTask.title = newUserInput
     setLocalStorageTasks()
+    displayTasks()
 }
